@@ -22,7 +22,7 @@ It not only captures expenses but also provides **AI-driven spending insights**,
 * 🏷️ Automatic category detection
 * 📊 Clean tabular response format
 * 🧾 **BILL command** → consolidated expenses for the day
-* 🤖 **INSIGHTS command** → AI-based spending analysis
+* 🤖 **INSIGHTS command** → AI-ready insights (rule-based with GenAI extensibility)”
 * 💾 Persistent storage using SQLite
 * 👥 Multi-user support (based on WhatsApp number)
 
@@ -75,7 +75,7 @@ TOTAL                      ₹320
 
 ---
 
-## 🤖 AI-Based Spending Insights
+## 🤖 AI-ready insights (rule-based with GenAI extensibility)”
 
 ### 📩 User:
 
