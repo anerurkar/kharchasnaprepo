@@ -1,4 +1,4 @@
-# 💸 KharchaSnap – WhatsApp Expense Tracker
+# 💸 KharchaSnap – WhatsApp Expense Tracker with AI Insights
 
 ![Java](https://img.shields.io/badge/Java-17-blue)
 ![Spring Boot](https://img.shields.io/badge/SpringBoot-3.x-green)
@@ -11,7 +11,7 @@
 
 **KharchaSnap** is a real-time, WhatsApp-based expense tracking system that enables users to log and track daily expenses using simple text messages.
 
-It intelligently parses messages, categorizes expenses, and generates structured outputs along with a consolidated daily bill.
+It not only captures expenses but also provides **AI-driven spending insights**, helping users understand their spending patterns instantly.
 
 ---
 
@@ -19,9 +19,10 @@ It intelligently parses messages, categorizes expenses, and generates structured
 
 * 📩 Add expenses via WhatsApp messages
 * 🧠 Smart parsing (quantity + item + amount)
-* 🏷️ Automatic category detection (Dairy, Food, Grocery, Fuel, General)
+* 🏷️ Automatic category detection
 * 📊 Clean tabular response format
 * 🧾 **BILL command** → consolidated expenses for the day
+* 🤖 **INSIGHTS command** → AI-based spending analysis
 * 💾 Persistent storage using SQLite
 * 👥 Multi-user support (based on WhatsApp number)
 
@@ -29,15 +30,15 @@ It intelligently parses messages, categorizes expenses, and generates structured
 
 ## 🎬 Demo Flow
 
-1️⃣ User sends message:
+### 📩 Add Expense
 
-```
+```id="a1"
 10 vadapav 200, 2 milk 100
 ```
 
-2️⃣ System responds:
+### ✅ Response
 
-```
+```id="a2"
 ✅ Added:
 
 Quantity   Item Name      Category      Amount
@@ -52,15 +53,15 @@ TOTAL                      ₹300
 
 ## 🧾 BILL Feature
 
-Send:
+### 📩 User:
 
-```
+```id="a3"
 bill
 ```
 
-📊 System returns **full day consolidated expenses**:
+### 📊 Response:
 
-```
+```id="a4"
 🧾 Today's Bill
 
 Quantity   Item Name      Category      Amount
@@ -71,6 +72,42 @@ Quantity   Item Name      Category      Amount
 ----------------------------------------------
 TOTAL                      ₹320
 ```
+
+---
+
+## 🤖 AI-Based Spending Insights
+
+### 📩 User:
+
+```id="a5"
+insights
+```
+
+### 📊 Response:
+
+```id="a6"
+📊 Spending Insights
+
+💰 Total Spend Today: ₹3200  
+🔥 Top Category: 🥛 Dairy (₹1350)  
+📦 Most Bought Item: milk (3 times)  
+⚠️ High Expense Item: ghee ₹1200  
+
+💡 Suggestion:
+You are spending more on Dairy. Consider optimizing or reducing this category.
+```
+
+---
+
+## 🧠 How Insights Work
+
+* Aggregates daily expenses
+* Performs category-wise analysis
+* Identifies spending patterns
+* Detects highest expense items
+* Generates intelligent recommendations
+
+👉 Designed as a **lightweight AI engine (rule-based + extensible to GenAI)**
 
 ---
 
@@ -92,7 +129,7 @@ Controller Layer (Webhook)
 Parser Engine (Regex आधारित parsing)
         │
         ▼
-Service Layer (Business Logic)
+Service Layer (Business Logic + Insights Engine)
         │
         ▼
 Repository Layer (JPA)
@@ -105,12 +142,12 @@ Repository Layer (JPA)
 
 ## 🧠 Architecture Highlights
 
-* Event-driven communication via WhatsApp webhook
+* Event-driven WhatsApp webhook integration
 * Stateless REST API design
-* Regex-based intelligent parsing engine
-* Layered architecture (Controller → Service → Repository)
-* Embedded database (SQLite) for persistence
-* Multi-user data isolation using phone number
+* Modular service layer with analytics engine
+* Real-time insights generation
+* Embedded database for persistence
+* Multi-user isolation using phone number
 
 ---
 
@@ -119,7 +156,7 @@ Repository Layer (JPA)
 * Java 17
 * Spring Boot
 * Spring Data JPA
-* SQLite (Embedded Database)
+* SQLite
 * Twilio WhatsApp API
 * Maven
 
@@ -153,8 +190,6 @@ cd kharchasnap
 ---
 
 ### 2️⃣ Configure Application
-
-Ensure `application.properties`:
 
 ```
 spring.datasource.url=jdbc:sqlite:kharcha.db
@@ -190,11 +225,11 @@ https://<your-ngrok-url>/whatsapp
 ## 📁 Project Structure
 
 ```
-controller/      → WhatsApp API handling
-service/         → Business logic
-repository/      → Database operations
-model/           → Entity classes
-util/            → Message parsing logic
+controller/      → WhatsApp API handling  
+service/         → Business logic + insights engine  
+repository/      → Database operations  
+model/           → Entity classes  
+util/            → Message parsing logic  
 ```
 
 ---
@@ -203,15 +238,15 @@ util/            → Message parsing logic
 
 * 📄 Export bill as PDF
 * 📊 Monthly analytics dashboard
-* 🤖 AI-based spending insights
+* 🤖 GenAI-based conversational insights
 * ☁️ Cloud deployment (AWS/Azure)
-* 📈 Category-wise spending trends
+* 📈 Budget alerts & anomaly detection
 
 ---
 
 ## 🎯 Use Case
 
-Designed as a **personal finance assistant** for quick, frictionless expense tracking without needing a dedicated mobile app.
+A **personal AI finance assistant** that enables frictionless expense tracking and intelligent spending awareness directly from WhatsApp.
 
 ---
 
@@ -224,6 +259,6 @@ Enterprise Technology Leader | AI & Cloud Architect
 
 ## ⭐ Resume Highlight
 
-> Developed a WhatsApp-based expense tracking system with real-time parsing, category classification, and persistent storage using Spring Boot, SQLite, and Twilio APIs.
+> Developed a WhatsApp-based expense tracking system with AI-driven spending insights, real-time parsing, category classification, and persistent storage using Spring Boot, SQLite, and Twilio APIs.
 
 ---
