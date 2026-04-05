@@ -38,6 +38,9 @@ public class WhatsAppController {
         if (message.equals("bill")) {
             return generateTodayBill(from);
         }
+		if (message.equals("insights")) {
+    return service.generateInsights(from);
+}
 
         // ✅ NORMAL FLOW
         List<Expense> expenses = ParserUtil.parseMessage(message);
