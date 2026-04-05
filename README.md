@@ -14,7 +14,8 @@
 It not only captures expenses but also provides **AI-driven spending insights**, helping users understand their spending patterns instantly.
 
 ---
-
+💬 SIMPLE TAGLINE
+👉 “बस WhatsApp पे खर्च लिखो, बाकी हम संभालेंगे”
 ## ✨ Key Features
 
 * 📩 Add expenses via WhatsApp messages
