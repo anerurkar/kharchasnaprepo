@@ -1,0 +1,6 @@
+com\example\kharcha\service\ExpenseService.class
+com\example\kharcha\model\Expense.class
+com\example\kharcha\util\ParserUtil.class
+com\example\kharcha\controller\WhatsAppController.class
+com\example\kharcha\repository\ExpenseRepository.class
+com\example\kharcha\KharchaApplication.class
