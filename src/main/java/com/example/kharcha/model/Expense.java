@@ -10,7 +10,7 @@ public class Expense {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String user;
+    private String userId;
     private String item;
     private double qty;
     private double amount;
@@ -30,8 +30,8 @@ public Expense(String item, double qty, double amount, String category) {
 }
 
 // ✅ Used by DB save
-public Expense(String user, String item, double qty, double amount, String category) {
-    this.user = user;
+public Expense(String userId, String item, double qty, double amount, String category) {
+    this.userId = userId;
     this.item = item;
     this.qty = qty;
     this.amount = amount;
@@ -39,7 +39,7 @@ public Expense(String user, String item, double qty, double amount, String categ
     this.date = LocalDate.now();
 }
 
-    public String getUser() { return user; }
+    public String getUserId() { return userId; }
     public String getItem() { return item; }
     public double getQty() { return qty; }
     public double getAmount() { return amount; }

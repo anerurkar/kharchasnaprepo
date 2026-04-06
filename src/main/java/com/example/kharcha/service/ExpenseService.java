@@ -15,18 +15,17 @@ public class ExpenseService {
     public ExpenseService(ExpenseRepository repo) {
         this.repo = repo;
     }
-	public List<Expense> getAllToday(String user) {
-    return repo.findByUserAndDate(user, LocalDate.now());
-}
 
-    // ✅ SAVE DATA
-    public void addExpenses(String user, List<Expense> expenses) {
+public List<Expense> getAllToday(String user) {
+    return repo.findByUserIdAndDate(user, LocalDate.now());
+}
+    public void addExpenses(String userId, List<Expense> expenses) {
 
         List<Expense> toSave = new ArrayList<>();
 
         for (Expense e : expenses) {
             toSave.add(new Expense(
-                    user,
+                    userId,
                     e.getItem(),
                     e.getQty(),
                     e.getAmount(),
@@ -37,10 +36,37 @@ public class ExpenseService {
         repo.saveAll(toSave);
     }
 
-    // ✅ GET TODAY BILL
-    public List<Expense> getTodayExpenses(String user) {
-        return repo.findByUserAndDate(user, LocalDate.now());
+    public List<Expense> getTodayExpenses(String userId) {
+        return repo.findByUserIdAndDate(userId, LocalDate.now());
     }
+
+    /* public String generateInsights(String userId) {
+
+        List<Expense> expenses = getTodayExpenses(userId);
+
+        if (expenses.isEmpty()) {
+            return "No data available for insights today";
+        }
+
+        double total = expenses.stream()
+                .mapToDouble(Expense::getAmount)
+                .sum();
+
+        Map<String, Double> categorySpend = new HashMap<>();
+        for (Expense e : expenses) {
+            categorySpend.put(
+                    e.getCategory(),
+                    categorySpend.getOrDefault(e.getCategory(), 0.0) + e.getAmount()
+            );
+        }
+
+        String topCategory = Collections.max(categorySpend.entrySet(),
+                Map.Entry.comparingByValue()).getKey();
+
+        return "📊 Insights\n\n" +
+                "💰 Total: ₹" + (int) total + "\n" +
+                "🔥 Top Category: " + topCategory;
+    } */
 	public String generateInsights(String user) {
 
     List<Expense> expenses = getAllToday(user);
@@ -96,4 +122,5 @@ public class ExpenseService {
             "⚠️ High Expense Item: " + maxExpense.getItem() + " ₹" + (int) maxExpense.getAmount() + "\n\n" +
             "💡 Suggestion:\n" + suggestion;
 }
+
 }
